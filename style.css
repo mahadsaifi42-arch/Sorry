@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: #ffeef5;
+  color: #333;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.page-section {
+  display: none;
+  animation: fadeIn 1s ease;
+}
+
+.page-section.active {
+  display: block;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-top: 40px;
+}
+
+.button-group button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#yesButton, #okayFineButton, #forgiveFullyButton {
+  background: #ff6699;
+  color: #fff;
+}
+
+#noButton, #stillNoButton, #stillAngryButton {
+  background: #444;
+  color: #fff;
+}
+
+.apology-gif {
+  max-width: 300px;
+  border-radius: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
