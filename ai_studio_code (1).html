@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Am Sorry Fatima 🤍</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+        
+        body {
+            background-color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            flex-direction: column;
+            text-align: center;
+            font-variant: small-caps;
+        }
+
+        /* Floating Hearts Background */
+        .bg-heart {
+            position: absolute;
+            font-size: 18px;
+            color: #ffccd5;
+            opacity: 0.6;
+            animation: floatUp 10s infinite linear;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .screen { 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            animation: fadeIn 1s ease; 
+            min-height: 80vh; 
+        }
+        .active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Typography */
+        h1 { 
+            font-weight: 600; 
+            font-size: 20px; 
+            letter-spacing: 3px; 
+            margin-bottom: 30px; 
+            color: #444; 
+            text-transform: capitalize;
+            line-height: 1.5;
+        }
+        
+        p {
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            line-height: 2.2;
+            margin-bottom: 25px;
+            color: #666;
+            text-transform: capitalize;
+        }
+
+        /* Letter Box Style */
+        .letter-scroll {
+            width: 100%;
+            max-height: 65vh;
+            overflow-y: auto;
+            background: #fffafb;
+            padding: 30px 20px;
+            border-radius: 15px;
+            border: 1px solid #ffeef0;
+            text-align: left;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.1);
+        }
+
+        .urdu-text { 
+            font-variant: normal; 
+            text-transform: none; 
+            font-size: 15px; 
+            line-height: 2.4; 
+            color: #444;
+            display: block;
+        }
+
+        .btn {
+            background: transparent;
+            color: #555;
+            border: 1px solid #999;
+            padding: 12px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 15px;
+            font-variant: small-caps;
+        }
+        .btn:hover { border-color: #ffb7c5; color: #ff9a9e; background: #fffcfd; }
+
+        /* Hidden Interaction */
+        #hidden-trigger { font-size: 11px; color: #ccc; cursor: pointer; margin-top: 40px; text-decoration: underline; font-variant: small-caps;}
+        #hidden-msg { display: none; font-size: 13px; color: #ff9a9e; margin-top: 15px; font-style: italic; font-variant: small-caps;}
+
+        .letter-scroll::-webkit-scrollbar { width: 3px; }
+        .letter-scroll::-webkit-scrollbar-thumb { background: #ffccd5; border-radius: 10px; }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<div id="heart-bg-container"></div>
+
+<div class="container">
+
+    <!-- PAGE 1: OPENING -->
+    <div class="screen active" id="s1">
+        <h1>I Was Busy... <br> But Not Away From You</h1>
+        <p>Aap Ko Pata Hai Ye Do Din Mere Liye Kaise Guzre? <br> Sab Paas The... Bas Ek Aap Door Thin. 🤍</p>
+        <button class="btn" onclick="next('s2')">Suniye...</button>
+    </div>
+
+    <!-- PAGE 2: THE MESS -->
+    <div class="screen" id="s2">
+        <h1>The Silence...</h1>
+        <p>Mujhe Pata Hai Maine In Do Dinon Mein Aap Ko Wo Waqt Nahi Diya Jiske Liye Aap Intezar Kar Rahi Thin.</p>
+        <p>Waqt Ka Pata Hi Nahi Chala Aur Main Sab Mess Kar Gaya. <br> Par Is Shor Mein Bhi Main Aapko Hi Dhoond Raha Tha.</p>
+        <button class="btn" onclick="next('s3')">Next</button>
+    </div>
+
+    <!-- PAGE 3: THE CLOTHES APOLOGY -->
+    <div class="screen" id="s3">
+        <h1>Mujhe Maaf Kar Dijiye...</h1>
+        <p>Maine Aap Ki Pasand Ke Kapde Nahi Pehne... Is Baat Ka Afsos Mujhe Baad Mein Hua.</p>
+        <p>Aapki Har Ek Choice Mere Liye Sabse Pehle Hai. <br> Main Uss Waqt Shayad Sahi Se Nahi Samajh Paaya... </p>
+        <p>Par Ab Sirf Aapki Pasand Hi Meri Pehli Pasand Hogi.</p>
+        <button class="btn" onclick="next('s4')">Mera Khat Padhiye</button>
+    </div>
+
+    <!-- PAGE 4: THE MAIN URDU LETTER -->
+    <div class="screen" id="s4">
+        <h1>Dil Ki Baat</h1>
+        <div class="letter-scroll">
+            <span class="urdu-text">
+                Fatima... ye jo masroofiyat hoti hai na ye sirf bahar ka shor hai andar toh wahi ek khamoshi hai jisme sirf aapka zikr hota hai... 
+                <br><br>
+                mujhe pata hai kal aur aaj main thoda bhatak gaya tha par iska matlab ye hargiz nahi ke aap mere zehen se door thi... 
+                <br><br>
+                mujhe dukh hai ke maine aapki baaton ko wo tawajjo nahi di jo aap deserve karti hain... aapka mujhpar apni pasand ke liye haq jatana hi toh mujhe sukoon deta hai... 
+                <br><br>
+                main seekh raha hoon ke kaise is shor mein bhi sirf aapko sunu aur aapko mehsoos karu... aap mere liye wahi jagah ho jahan thak haar kar dil sukoon talash karta hai...
+            </span>
+        </div>
+        <button class="btn" onclick="next('s5')">Next</button>
+    </div>
+
+    <!-- PAGE 5: QUESTIONS -->
+    <div class="screen" id="s5">
+        <h1>Two Questions...</h1>
+        <p>Agar Main Wahan Hota Toh Kya Aap Tab Bhi Itni Khamosh Rehtin?</p>
+        <p>Ya Phir Bas Mere Paas Baith Kar Aapni Saari Shikayatein Suna Detin?</p>
+        <button class="btn" onclick="next('s6')">Continue</button>
+    </div>
+
+    <!-- PAGE 6: CLOSING -->
+    <div class="screen" id="s6">
+        <p>Being Busy Was Real.</p>
+        <p>But Missing You Was Real Too.</p>
+        <p style="margin-top: 30px; font-weight: 500; color: #ff9a9e;">Next Time I Will Slow Down Before I Miss You Again.</p>
+        
+        <div id="hidden-trigger" onclick="showHidden()">Tap If You Are Still A Little Upset</div>
+        <div id="hidden-msg">"I Think I Missed You More Than I Should Have" <br>🤍</div>
+    </div>
+
+</div>
+
+<script>
+    // Create Background Hearts
+    const hbContainer = document.getElementById('heart-bg-container');
+    setInterval(() => {
+        let heart = document.createElement('div');
+        heart.className = 'bg-heart';
+        heart.innerText = '🤍';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 7) + 's';
+        heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+        hbContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+    }, 700);
+
+    function next(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function showHidden() {
+        document.getElementById('hidden-msg').style.display = 'block';
+        confetti({
+            particleCount: 50,
+            spread: 70,
+            origin: { y: 0.8 },
+            colors: ['#ffccd5', '#ffb7c5', '#ffffff']
+        });
+    }
+</script>
+
+</body>
+</html>
